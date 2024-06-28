@@ -1,17 +1,24 @@
 body {
-  font-family: Arial;
+  font-family: Montserrat;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 h1 {
   text-align: center;
+  font-weight: 500;
   font-size: 30px;
 }
 
-.choices {
+.title-container {
+  display: block;
+  background-color: rgb(233, 233, 233);
+}
+
+.choices-container {
   display: flex;
   justify-content: center;
+  margin-bottom: 30px;
 }
 
 .choice-icon {
@@ -20,14 +27,34 @@ h1 {
 }
 
 .choice-button {
+  background-color: whitesmoke;
   border: 1px solid gray;
   margin-left: 10px;
   margin-right: 10px;
   padding: 20px 20px;
   border-radius: 45px;
   cursor: pointer;
+  transition: background-color 0.15s;
 }
 
 .choice-button:hover {
   background-color: rgb(233, 233, 233);
+}
+
+.reset-button-container {
+  text-align: center;
+}
+
+.reset-button {
+  border: none;
+  background-color: rgb(255, 63, 63);
+  border-radius: 3px;
+  color: white;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.reset-button:hover {
+  background-color: rgb(255, 16, 16);
 }

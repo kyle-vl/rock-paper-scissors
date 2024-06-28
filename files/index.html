@@ -5,13 +5,21 @@
     <title>
       Paper Scissors Rock
     </title>
+
+    <!-- Getting Montserrat Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <h1>
-      Paper Scissors Rock
-    </h1>
-    <div class="choices">
+    <div class="title-container">
+      <h1>
+        Paper Scissors Rock
+      </h1>
+    </div>
+    <div class="choices-container">
       <button class="choice-button" onclick="playGame('paper')">
        <img class="choice-icon" src="images/paper.png">
       </button>
@@ -22,9 +30,11 @@
         <img class="choice-icon" src="images/rock.png">
       </button>
     </div>
-    <button class="reset-button" onclick="resetScore()">
-      Reset Score
-    </button>
+    <div class="reset-button-container">
+      <button class="reset-button" onclick="resetScore()">
+        Reset Score
+      </button>
+    </div>
     <script src="script.js"></script>
   </body>
 </html>
