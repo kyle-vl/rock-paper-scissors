@@ -7,8 +7,17 @@ function getOpponentChoice() {
 
 function playGame(userChoice) {
   const opponentChoice = getOpponentChoice();
-  alert(
-    `You chose ${userChoice}
-    Computer chose ${opponentChoice}`
-  );
+  let result = ''
+  
+  if (userChoice === opponentChoice) {
+    result = 'tie';
+  } else if ((userChoice === 'paper' && opponentChoice === 'scissors') ||
+  (userChoice === 'scissors' && opponentChoice === 'rock') ||
+  (userChoice === 'rock' && opponentChoice === 'paper')) {
+    result = 'lose';
+  } else {
+    result = 'win';
+  }
+
+  alert(`You chose ${userChoice}. Opponent chose ${opponentChoice}. You ${result}!`)
 }
