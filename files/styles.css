@@ -40,7 +40,8 @@ h1 {
   transform: translateX(-50%);
 }
 
-.choice-button {
+.choice-button,
+.selected-choice-container {
   background-color: whitesmoke;
   border: 1px solid gray;
   border-radius: 50%;
@@ -52,7 +53,9 @@ h1 {
   margin-left: 10px;
   margin-right: 10px;
   padding: 40px;
+}
 
+.choice-button {
   cursor: pointer;
   transition: background-color 0.15s;
 }
@@ -72,7 +75,6 @@ h1 {
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
   padding: 8px 16px;
-  margin-bottom: 10px;
   
   cursor: pointer;
   transition: background-color 0.15s;
@@ -83,10 +85,15 @@ h1 {
 }
 
 .results-container {
-  text-align: center;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.results-container p {
+  margin-left: 5px;
 }
 
 .scores-container {
   text-align: center;
+  margin-bottom: 10px;
 }

@@ -10,6 +10,14 @@ if (!score) {
   };
 }
 
+displayScores();
+
+let userChoiceElement = 
+  document.getElementById("selected-user-choice-icon");
+let opponentChoiceElement = 
+  document.getElementById("selected-opponent-choice-icon");
+let resultsElement = document.getElementById("results");
+
 function getOpponentChoice() {
   const choices = ["paper", "scissors", "rock"];
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -39,13 +47,17 @@ function playGame(userChoice) {
   localStorage.setItem('score', JSON.stringify(score));
 
   // Display results and score on document
-  let resultMessage = `You chose ${userChoice}.<br>
-  Opponent chose ${opponentChoice}.<br>
-  <strong>${result}</strong>`;
-  let resultsElement = document.getElementById("results");
+  let resultMessage = `<strong>${result}</strong>`;
   resultsElement.innerHTML = resultMessage;
 
   displayScores();
+
+  // Display played moves
+  let userChoiceIcon = `images/${userChoice}.png`;
+  let opponentChoiceIcon = `images/${opponentChoice}.png`;
+
+  userChoiceElement.src = userChoiceIcon;
+  opponentChoiceElement.src = opponentChoiceIcon;
 }
 
 function displayScores() {
@@ -61,6 +73,17 @@ function resetScore() {
   score.losses = 0;
   score.ties = 0;
 
+  // Reset current round details on document
+  let resultMessage = 'Press an option to start';
+  resultsElement.innerHTML = resultMessage;
+
   // Reset scoreboard on document
   displayScores();
+
+  // Reset current moves on document
+  let userChoiceIcon = `images/blank.png`;
+  let opponentChoiceIcon = `images/blank.png`;
+
+  userChoiceElement.src = userChoiceIcon;
+  opponentChoiceElement.src = opponentChoiceIcon;
 }
