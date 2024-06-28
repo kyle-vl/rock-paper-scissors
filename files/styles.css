@@ -72,6 +72,7 @@ h1 {
   border-radius: 3px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.15);
   padding: 8px 16px;
+  margin-bottom: 10px;
   
   cursor: pointer;
   transition: background-color 0.15s;
@@ -79,4 +80,13 @@ h1 {
 
 .reset-button:hover {
   background-color: rgb(255, 16, 16);
+}
+
+.results-container {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.scores-container {
+  text-align: center;
 }
