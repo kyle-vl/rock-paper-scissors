@@ -5,21 +5,24 @@
     <title>
       Paper Scissors Rock
     </title>
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <p>
+    <h1>
       Paper Scissors Rock
-    </p>
-    <button onclick="playGame('paper')">
-      Paper
-    </button>
-    <button onclick="playGame('scissors')">
-      Scissors
-    </button>
-    <button onclick="playGame('rock')">
-      Rock
-    </button>
-    <button onclick="resetScore()">
+    </h1>
+    <div class="choices">
+      <button class="choice-button" onclick="playGame('paper')">
+       <img class="choice-icon" src="images/paper.png">
+      </button>
+      <button class="choice-button" onclick="playGame('scissors')">
+        <img class="choice-icon" src="images/scissors.png">
+      </button>
+      <button class="choice-button" onclick="playGame('rock')">
+        <img class="choice-icon" src="images/rock.png">
+      </button>
+    </div>
+    <button class="reset-button" onclick="resetScore()">
       Reset Score
     </button>
     <script src="script.js"></script>
