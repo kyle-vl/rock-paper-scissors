@@ -41,16 +41,28 @@ if (!score) {
 }
 
 function getOpponentChoice() {
-  const choices = ["paper", "scissors", "rock"];
-  const randomIndex = Math.floor(Math.random() * choices.length);
+  if (Number(gameCount) < 5) {
+    const choices = ["paper", "scissors", "rock"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
 
-  return choices[randomIndex];
+    return choices[randomIndex];
+  } else {
+    if (userChoiceHistory.paper >= userChoiceHistory.scissors &&
+      userChoiceHistory.paper >= userChoiceHistory.rock) {
+      return 'scissors';
+    } else if (userChoiceHistory.rock >= userChoiceHistory.scissors) {
+      return 'paper';
+    } else {
+      return 'rock';
+    }
+  }
 }
 
 function playGame(userChoice) {
+  const opponentChoice = getOpponentChoice();
+
   gameCount++;
   userChoiceHistory[userChoice]++;
-  const opponentChoice = getOpponentChoice();
 
   // Determine winner
   if (userChoice === opponentChoice) {
@@ -81,12 +93,7 @@ function playGame(userChoice) {
 }
 
 function updateDisplay(result, userChoice, opponentChoice) {
-
-  // Note to self: on refresh, gameCount becomes a string.
-  console.log(typeof gameCount);
-
   console.log(`Rounds played: ${gameCount}`);
-  console.log(typeof userChoiceHistory.paper);
   console.log(`User played paper ${userChoiceHistory.paper} times`);
   console.log(`User played scissors ${userChoiceHistory.scissors} times`);
   console.log(`User played rock ${userChoiceHistory.rock} times`);
