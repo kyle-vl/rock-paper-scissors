@@ -41,12 +41,19 @@ if (!score) {
 }
 
 function getOpponentChoice() {
-  if (Number(gameCount) < 5) {
+
+  if (Number(gameCount) < 5 || (result === 'You win!' || result === "It's a tie!")) {
+    /* If less than 5 rounds have been played OR the opponent lost the
+    previous round, opponent will pick a random choice. */
     const choices = ["paper", "scissors", "rock"];
     const randomIndex = Math.floor(Math.random() * choices.length);
 
     return choices[randomIndex];
   } else {
+    /* If more than 5 rounds have been played, AND the opponent won
+    the previous round, opponent will pick the choice most likely to
+    win based on the amount of times the player has played each choice. */
+    console.log('Opponent chooses depending on userChoiceHistory');
     if (userChoiceHistory.paper >= userChoiceHistory.scissors &&
       userChoiceHistory.paper >= userChoiceHistory.rock) {
       return 'scissors';
