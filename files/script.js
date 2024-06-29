@@ -12,8 +12,12 @@ let score = JSON.parse(localStorage.getItem('score'));
 let userChoice = localStorage.getItem('userChoice');
 let opponentChoice = localStorage.getItem('opponentChoice');
 
-/* Note to self: only the 'score' variable needs to be stringified for storage
-and parsed on retrieval as all other variables are already strings. */
+// Retrieve counters from localStorage
+let gameCount = localStorage.getItem('gameCount');
+let userChoiceHistory = JSON.parse(localStorage.getItem('userChoiceHistory'));
+
+/* Note to self: 'score' and 'userChoiceHistory' variables need to be stringified 
+for storage and parsed on retrieval as all other variables are already strings. */
 
 // Initialize score if it doesn't exist
 if (!score) {
@@ -22,6 +26,13 @@ if (!score) {
     losses: 0,
     ties: 0
   };
+
+  userChoiceHistory = {
+    paper: 0,
+    scissors: 0,
+    rock: 0
+  };
+
   // Set default values on display
   resetDisplay();
 } else {
@@ -37,6 +48,8 @@ function getOpponentChoice() {
 }
 
 function playGame(userChoice) {
+  gameCount++;
+  userChoiceHistory[userChoice]++;
   const opponentChoice = getOpponentChoice();
 
   // Determine winner
@@ -58,12 +71,26 @@ function playGame(userChoice) {
   localStorage.setItem('score', JSON.stringify(score));
   localStorage.setItem('userChoice', userChoice);
   localStorage.setItem('opponentChoice', opponentChoice);
+
+  // Store updated counters in local storage
+  localStorage.setItem('gameCount', gameCount);
+  localStorage.setItem('userChoiceHistory', JSON.stringify(userChoiceHistory));
  
   // Update display with round details
   updateDisplay(result, userChoice, opponentChoice);
 }
 
 function updateDisplay(result, userChoice, opponentChoice) {
+
+  // Note to self: on refresh, gameCount becomes a string.
+  console.log(typeof gameCount);
+
+  console.log(`Rounds played: ${gameCount}`);
+  console.log(typeof userChoiceHistory.paper);
+  console.log(`User played paper ${userChoiceHistory.paper} times`);
+  console.log(`User played scissors ${userChoiceHistory.scissors} times`);
+  console.log(`User played rock ${userChoiceHistory.rock} times`);
+
   let resultMessage = `<strong>${result}</strong>`;
   let scoresMessage = `Wins: ${score.wins}<br>
   Losses: ${score.losses}<br>
@@ -78,10 +105,16 @@ function updateDisplay(result, userChoice, opponentChoice) {
 }
 
 function resetDisplay() {
-  // Set all score values to zero
+  // Reset score values to zero
   score.wins = 0;
   score.losses = 0;
   score.ties = 0;
+
+  // Reset counters
+  gameCount = 0;
+  userChoiceHistory.paper = 0;
+  userChoiceHistory.scissors = 0;
+  userChoiceHistory.rock = 0;
 
   // Reset current round details
   result = 'Press an option to start';
