@@ -1,10 +1,10 @@
 // Selectors
-let scoresElement = document.getElementById("scores");
+let scoresElement = document.getElementById("js-scores");
 let userChoiceElement = 
-  document.getElementById("selected-user-choice-icon");
+  document.getElementById("js-selected-user-choice-icon");
 let opponentChoiceElement = 
-  document.getElementById("selected-opponent-choice-icon");
-let resultsElement = document.getElementById("results");
+  document.getElementById("js-selected-opponent-choice-icon");
+let resultsElement = document.getElementById("js-results");
 
 // Retrieve scores and result from localStorage
 let result = localStorage.getItem('result');
@@ -100,11 +100,6 @@ function playGame(userChoice) {
 }
 
 function updateDisplay(result, userChoice, opponentChoice) {
-  console.log(`Rounds played: ${gameCount}`);
-  console.log(`User played paper ${userChoiceHistory.paper} times`);
-  console.log(`User played scissors ${userChoiceHistory.scissors} times`);
-  console.log(`User played rock ${userChoiceHistory.rock} times`);
-
   let resultMessage = `<strong>${result}</strong>`;
   let scoresMessage = `Wins: ${score.wins}<br>
   Losses: ${score.losses}<br>
@@ -123,6 +118,12 @@ function resetDisplay() {
   score.wins = 0;
   score.losses = 0;
   score.ties = 0;
+
+  // Remove saved details
+  localStorage.removeItem('result');
+  localStorage.removeItem('score');
+  localStorage.removeItem('userChoice');
+  localStorage.removeItem('opponentChoice');
 
   // Reset counters
   gameCount = 0;
