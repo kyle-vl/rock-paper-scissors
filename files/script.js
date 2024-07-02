@@ -1,10 +1,31 @@
 // Selectors
-let scoresElement = document.getElementById("js-scores");
-let userChoiceElement = 
+const scoresElement = document.getElementById("js-scores");
+const userChoiceElement = 
   document.getElementById("js-selected-user-choice-icon");
-let opponentChoiceElement = 
+const opponentChoiceElement = 
   document.getElementById("js-selected-opponent-choice-icon");
-let resultsElement = document.getElementById("js-results");
+const resultsElement = document.getElementById("js-results");
+
+// Event listeners
+document.getElementById('js-paper-button')
+  .addEventListener('click', () => {
+    playGame('paper');
+  })
+
+document.getElementById('js-scissors-button')
+  .addEventListener('click', () => {
+    playGame('scissors');
+  })
+
+document.getElementById('js-rock-button')
+  .addEventListener('click', () => {
+    playGame('rock');
+  })
+
+document.getElementById('js-reset-button')
+  .addEventListener('click', () => {
+    resetDisplay();
+  })
 
 // Retrieve scores and result from localStorage
 let result = localStorage.getItem('result');

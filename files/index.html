@@ -14,15 +14,15 @@
       </h1>
     </div>
     <div class="choices-container">
-      <button class="choice-button" onclick="playGame('paper')">
+      <button class="choice-button" id="js-paper-button">
         <img class="choice-icon" src="images/paper.png">
         <p class="choice-text"> Paper </p>
       </button>
-      <button class="choice-button" onclick="playGame('scissors')">
+      <button class="choice-button" id="js-scissors-button">
         <img class="choice-icon" src="images/scissors.png">
         <p class="choice-text"> Scissors </p>
       </button>
-      <button class="choice-button" onclick="playGame('rock')">
+      <button class="choice-button" id="js-rock-button">
         <img class="choice-icon" src="images/rock.png">
         <p class="choice-text"> Rock </p>
       </button>
@@ -49,7 +49,7 @@
       <div id="js-scores"></div>
     </div>
     <div class="reset-button-container">
-      <button class="reset-button" onclick="resetDisplay()">
+      <button class="reset-button" id="js-reset-button">
         Reset Score
       </button>
     </div>
